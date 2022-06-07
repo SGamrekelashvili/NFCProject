@@ -60,7 +60,7 @@ buck-out/
 /ios/Pods/
 /vendor/bundle/
 
-components
+
 .vscode
 __test__
 .bundle
