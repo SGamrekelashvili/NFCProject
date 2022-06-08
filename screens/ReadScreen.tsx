@@ -8,6 +8,7 @@ const ReadScreen = () => {
   const [Data, setData] = React.useState(null);
 
   const ProxyNfc = new ProxyNFC();
+
   React.useEffect(() => {
     const init = async () => {
       const data = await ProxyNfc.init();
@@ -25,6 +26,7 @@ const ReadScreen = () => {
       console.warn('yes');
     }
   }, [Ready]);
+
   const CleanUp = async () => {
     await ProxyNfc.cleanUp();
   };
