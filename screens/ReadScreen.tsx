@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import ProxyNFC from '../utils/ProxyNFC';
 import NdefMessage from '../components/NdefMessage';
+import Button from '../components/Button';
 
 const ReadScreen = () => {
   const [Ready, setReady] = React.useState<Boolean>(false);
@@ -23,7 +24,6 @@ const ReadScreen = () => {
   React.useEffect(() => {
     if (Ready) {
       ReadNFC();
-      console.warn('yes');
     }
   }, [Ready]);
 
@@ -33,7 +33,6 @@ const ReadScreen = () => {
 
   const ReadNFC = async () => {
     const data = await ProxyNfc.readTag();
-
     const Payload = data.ndefMessage;
     const ndef =
       Array.isArray(Payload) && Payload.length > 0 ? Payload[0] : null;
@@ -45,6 +44,13 @@ const ReadScreen = () => {
       <Text>ReadScreen</Text>
       <Text>{`${Ready}`}</Text>
       {Data ? <NdefMessage ndef={Data} /> : <Text>---</Text>}
+      <Button
+        text="Read NFC One More Time"
+        onPress={() => {
+          setData(null);
+          ReadNFC();
+        }}
+      />
     </View>
   );
 };
@@ -53,8 +59,8 @@ export default ReadScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    flex: 0.5,
+    justifyContent: 'space-evenly',
     alignItems: 'center',
   },
 });

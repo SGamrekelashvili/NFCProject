@@ -3,6 +3,8 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {WriteScreen, ReadScreen, Home} from './screens';
+import NdefWrite from './screens/NdefWrite';
+import {Provider as PaperProvider} from 'react-native-paper';
 
 const Stack = createNativeStackNavigator();
 
@@ -10,15 +12,18 @@ const options = {};
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="WriteScreen" component={WriteScreen} />
-          <Stack.Screen name="ReadScreen" component={ReadScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaView>
+    <PaperProvider>
+      <SafeAreaView style={styles.container}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="WriteScreen" component={WriteScreen} />
+            <Stack.Screen name="ReadScreen" component={ReadScreen} />
+            <Stack.Screen name="NdefWrite" component={NdefWrite} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaView>
+    </PaperProvider>
   );
 };
 
