@@ -1,6 +1,7 @@
 import {Alert, Linking, TouchableOpacity, Text} from 'react-native';
 import {Ndef} from 'react-native-nfc-manager';
 import {NdefMessageProps} from '../../utils/Types';
+import React from 'react';
 
 const RtdUriPayload = ({ndef}: NdefMessageProps) => {
   const uri = Ndef.uri.decodePayload(ndef.payload);

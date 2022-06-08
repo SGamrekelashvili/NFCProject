@@ -1,6 +1,7 @@
 import {Text, View} from 'react-native';
 import {Ndef} from 'react-native-nfc-manager';
 import {NdefMessageProps} from '../../utils/Types';
+import React from 'react';
 
 const TextBasedMimePayload = ({ndef, mimeType}: NdefMessageProps) => {
   const text = Ndef.util.bytesToString(ndef.payload);

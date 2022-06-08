@@ -1,6 +1,7 @@
 import {Text, View} from 'react-native';
 import {Ndef} from 'react-native-nfc-manager';
 import {NdefMessageProps} from '../../utils/Types';
+import React from 'react';
 
 const WifiSimplePayload = ({ndef}: NdefMessageProps) => {
   const credentials = Ndef.wifiSimple.decodePayload(ndef.payload);
