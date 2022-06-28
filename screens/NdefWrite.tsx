@@ -8,6 +8,7 @@ import RtdUriShortcutWriter from '../components/Renderer/RtdUriShortcutWriter';
 import RtdUriWriter from '../components/Renderer/RtdUriWriter';
 import WifiSimpleWriter from '../components/Renderer/WifiSimpleWriter';
 import VCardWriter from '../components/Renderer/VCardWriter';
+import HCEWrite from '../components/Renderer/HCEWrite';
 
 export interface HomeScreenProps {
   navigation: NativeStackNavigationProp<any, any>;
@@ -28,11 +29,17 @@ const NdefWrite = (props: HomeScreenProps) => {
         } else if (payload.rtd === Ndef.RTD_URI) {
           return 'URI';
         }
+          else if (payload.rtd === "HCE"){
+            return "HCE"
+          }
       } else if (payload.tnf === Ndef.TNF_MIME_MEDIA) {
         if (payload.mimeType === Ndef.MIME_WFA_WSC) {
           return 'WIFI_SIMPLE';
         } else if (payload.mimeType === 'text/vcard') {
           return 'VCARD';
+        }
+        else if (payload.rtd === "HCE"){
+          return "HCE"
         }
       }
     }
@@ -65,6 +72,8 @@ const NdefWrite = (props: HomeScreenProps) => {
       return <WifiSimpleWriter ref={handlerRef} value={value} />;
     } else if (ndefType === 'VCARD') {
       return <VCardWriter ref={handlerRef} value={value} />;
+    }else if (ndefType === 'HCE'){
+      return <HCEWrite ref={handlerRef} value={value} />
     }
     return null;
   };

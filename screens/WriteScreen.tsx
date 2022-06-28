@@ -70,6 +70,13 @@ const WriteScreen = ({navigation}) => {
           icon: '',
           onPress: () => navigation.navigate('NdefWrite', {ndefType: 'VCARD'}),
         },
+        {
+          title: 'HCE (Supported Only On Android)',
+          description: 
+          'Send Info Between Androids',
+          icon: '',
+          onPress: () => navigation.navigate('NdefWrite', {ndefType: 'HCE'}),
+        },
       ],
     },
   ];
