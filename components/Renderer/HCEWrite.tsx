@@ -34,7 +34,7 @@ function HCEWrite(props: Props, ref: any) {
     };
   }
 
-  const writeNdef = async () => {
+  const writeHCE = async () => {
     inputRef.current && inputRef.current.blur();
 
     if (!value) {
@@ -43,6 +43,16 @@ function HCEWrite(props: Props, ref: any) {
 
   startSimulation(value);
     
+  };
+
+  const stopSimulation = async () => {
+    await simulation.terminate();
+  }
+  
+  const stopHCE = async () => {
+    if(simulation){
+        stopSimulation();
+    }
   };
 
   return (
@@ -69,7 +79,13 @@ function HCEWrite(props: Props, ref: any) {
         text="Write"
         containerStyle={{marginVertical: 10}}
         textStyle={{fontSize: 20}}
-        onPress={writeNdef}
+        onPress={writeHCE}
+      />
+      <Button
+        text="Stop"
+        containerStyle={{marginVertical: 10}}
+        textStyle={{fontSize: 20}}
+        onPress={stopHCE}
       />
     </KeyboardAvoidingView>
   );
